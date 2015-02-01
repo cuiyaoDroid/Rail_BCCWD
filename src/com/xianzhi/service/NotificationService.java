@@ -5,6 +5,7 @@ import java.util.List;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -60,7 +61,7 @@ public class NotificationService extends BaseRongYunService {
 
 		notifyAction(R.drawable.icon_main_train,
 				"com.xianzhi.baichengtraining", "4", "职教管理", "月度考核，点击开始", 3);
-		notifyAction(R.drawable.icon_main_train,
+		notifyAction(R.drawable.icon_main_safe,
 				"com.xianzhi.baichengtraining", "5", "动态预警", "刘义于2015-1-5发布的信息于炳仁已阅。", 5);
 	}
 	@Override
@@ -71,6 +72,15 @@ public class NotificationService extends BaseRongYunService {
 
 	private void notifyInsidePackage(Class<?> cls, String id, String title,
 			String content) {
+		/*ComponentName name=new ComponentName("com.xianzhi.baichengdynamic", "com.xianzhi.baichengdynamic.InitActivity");
+		
+		Intent intent=new Intent(Intent.ACTION_MAIN);
+		intent.setComponent(name);
+		startActivity(intent);*/
+		
+		//getPackageManager().getLaunchIntentForPackage(packageName)
+		
+		
 		Intent mNotificationIntent = new Intent(getApplicationContext(), cls);
 		notifyClient(R.drawable.launch3, id, title, content,
 				mNotificationIntent);
